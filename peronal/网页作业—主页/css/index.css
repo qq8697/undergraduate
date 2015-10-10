@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+#head { background: url(../images/head.jpg) no-repeat 0px 0px; height: 258px; width: 1024px; }
+#head #empty { height: 210px; }
+#head #nav ul { list-style: none; }
+#head #nav ul li { float: left; }
+#head #nav { margin: auto; width: 624px; }
+#head #nav ul li a { font-size: 24px; color: #FFF; text-decoration: none; text-align: center; display: block; margin: auto 16px; }
+body { margin: auto; width: 1024px; }
+#main { background: #35484e; height: 1430px; width: 1024px; }
+#main #right #foot { height: 30px; color: #FFF; border-top: 1px solid #96F; border-right: 1px solid #96F; border-bottom: 1px none #96F; border-left: 1px solid #96F; margin: auto; width:140px; }
+#head #nav ul li a:hover { color: #6596a9; position: relative; left: 1px; top: 1px; }
+#main #left #tx p a:hover { color: #6596a9; position: relative; left: 1px; top: 1px; }
+#main #left #dota p a:hover { color: #6596a9; position: relative; left: 1px; top: 1px; }
+#main #left #eva p a:hover { color: #6596a9; position: relative; left: 1px; top: 1px; }
+#main #left #milan p a:hover { color: #6596a9; position: relative; left: 1px; top: 1px; }
+#main #left #xj p a:hover { color: #6596a9; position: relative; left: 1px; top: 1px; }
+
+
+
+
+#main #left { float: left; width: 634px; font-size: 16px; }
+#main #left #tx { height: 200px; }
+a:hover img { position: relative; left: 1px; top: 1px; }
+
+#main #left #dota { height: 200px; }
+a img { border-style: none; }
+#main #right p:hover { color: #CCC; position: relative; left: 1px; top: 1px; }
+#main #right dl dt:hover { color: #000; position: relative; left: 1px; top: 1px; }
+#main #right dl dd:hover { color: #000; position: relative; left: 1px; top: 1px; }
+
+
+
+
+#main #left #eva { height: 200px; }
+#main #left #milan { height: 200px; }
+#main #left #xj { height: 200px; }
+#main #left #tx img { }
+.side { float: left; width: 210px; margin-left: 10px; }
+#main #left #dota p { background: #272e36; margin-top: 5px; margin-bottom: 10px; }
+#main #left #dota p a { font-size: 18px; color: #FFF; text-decoration: none; margin-left: 5px; }
+#main #left #eva p { background: #272e36; margin-top: 5px; margin-bottom: 10px; }
+#main #left #eva p a { font-size: 18px; color: #FFF; text-decoration: none; margin-left: 5px; }
+#main #left #milan p { background: #272e36; margin-top: 5px; margin-bottom: 10px; }
+#main #left #milan p a { font-size: 18px; color: #FFF; text-decoration: none; margin-left: 5px; }
+#main #left #xj p { background: #272e36; margin-top: 5px; margin-bottom: 10px; }
+#main #left #xj p a { font-size: 18px; color: #FFF; text-decoration: none; margin-left: 5px; }
+#main #right { height: 1360px; margin-left: 634px; }
+#main #right p { font-size: 36px; color: #FFF; margin-left: 20px; }
+#main #right dl { margin-top: 20px; margin-left: 20px; margin-bottom: 20px; }
+#main #right dl dt { font-size: 18px; color: #FFF; }
+#main #right dl dd { font-size: 16px; color: #999; text-align: center; }
+#main #right span { font-size: 18px; background: #272e36; display: block; color: #FFF; margin-bottom: 10px; padding-left: 5px; }
+#main #right #pic { margin-left: 45px; margin-bottom: 20px; margin-top: 20px; }
+
+
+
+
+
+
+
+
+
+
+
+
+#main #left #tx p { background: #272e36; margin-bottom: 10px; margin-top: 5px; }
+#main #left #tx p a { color: #FFF; font-size: 18px; text-decoration: none; margin-left: 5px; }
+body, ul, li, h1, h2, h3, h4, h5, h6, p, form, dl, dt, dd { margin: 0px; padding: 0px; font-size: 12px; font-weight: normal; }
+body { margin: auto; width: 1024px; }

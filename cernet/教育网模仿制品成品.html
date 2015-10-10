@@ -1,0 +1,1249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>中国教育和科研计算机网CERNET</title>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function showdate() {
+	clientdate = new Date();
+	clientyear = clientdate.getYear();
+	if(clientyear < 300) clientyear = 1900 + clientyear ;
+	clientmonth = clientdate.getMonth()+1;
+	clientday = clientdate.getDate();
+	weekday = clientdate.getDay();
+	if (weekday==0) weekday="天";
+	if (weekday==1) weekday="一";
+	if (weekday==2) weekday="二";
+	if (weekday==3) weekday="三";
+	if (weekday==4) weekday="四";
+	if (weekday==5) weekday="五";
+	if (weekday==6) weekday="六";
+	document.write("<span class='date'>"+clientyear+"年"+clientmonth+"月"+clientday+"日"+"　星期"+weekday+"</span>");
+}
+
+function showmore() {
+	var obj = document.getElementById('more');
+	obj.style.display = obj.style.display == 'none' ? 'block':'none';
+}
+</script>
+<script type="text/javascript">
+var YTabs = function(){
+	var D = document, j, len = 0, allTabs;
+	
+	return {
+		hasClass: function(elem, className){
+			var has = new RegExp("(?:^|\\s+)" + className + "(?:\\s+|$)");
+			return has.test(elem.className);
+		},
+		addClass: function(elem, className){
+			if (this.hasClass(elem, className)) {
+				return;
+			}
+			elem.className = [elem.className, className].join(" ");
+		},
+		removeClass: function(elem, className){
+			var replace = new RegExp("(?:^|\\s+)" + className + "(?:\\s+|$)", "g");
+			if (!this.hasClass(elem, className)) {
+				return;
+			}
+			var o = elem.className;
+			elem.className = o.replace(replace, " ");
+			if (this.hasClass(elem, className)) {
+				this.removeClass(elem, className);
+			}
+		},
+		getByClassName: function(className, tag, rootTag){
+			var elems = [], i, tempCnt = document.getElementById(rootTag).getElementsByTagName(tag), len = tempCnt.length;
+			for (i = 0; i < len; i++) {
+				if (YTabs.hasClass(tempCnt[i], className)) {
+					elems.push(tempCnt[i]);
+				}
+			}
+			if (elems.length < 1) {
+				return false;
+			}
+			else {
+				return elems;
+			}
+		},
+		tabs: function(){
+			len = arguments.length;
+			for (j = 0; j < len; j += 1) {
+				allTabs = arguments[j];
+				(function(oTabs){
+					var i, tabCnt = (oTabs.tabId) ? D.getElementById(oTabs.tabId) : (oTabs.tabRoot || null), tabs = (oTabs.tTag) ? tabCnt.getElementsByTagName(oTabs.tTag) : (oTabs.tabs || null), contents = (oTabs.cTag) ? tabCnt.getElementsByTagName(oTabs.cTag) : (oTabs.contents || null);
+					if (tabs && contents) {
+						var length = tabs.length, defaultIndex = oTabs.defaultIndex || 0, lastTab = tabs[defaultIndex], lastTabClass = oTabs.lastTabClass || '', hasLastClassTab = null, lastContent = contents[defaultIndex], evtName = oTabs.evt || 'mouseover';
+						YTabs.addClass(lastTab, 'current');
+						lastContent.style.display = 'block';
+						for (i = 0; i < length; i += 1) {
+							if (i !== defaultIndex) {
+								YTabs.removeClass(tabs[i], 'current');
+								contents[i].style.display = 'none';
+							}
+							
+							tabs[i]['on' + evtName] = function(index){
+								return function(event){
+									var currentContent = contents[index];
+									YTabs.removeClass(lastTab, 'current');
+									YTabs.addClass(this, 'current');
+									lastContent.style.display = "none";
+									currentContent.style.display = "block";
+									lastContent = currentContent;
+									lastTab = this;
+									if (evtName === 'click') {
+										var evt = event || window.event;
+										if (evt.stopPropagation) {
+											evt.stopPropagation();
+										}
+										else {
+											evt.cancelBubble = true;
+										}
+										if (evt.preventDefault) {
+											evt.preventDefault();
+										}
+										else {
+											evt.returnValue = false;
+										}
+									}
+								}
+							}(i);
+						}
+					}
+				})(allTabs);
+			}
+		}
+	}
+}();
+</script>
+<script type="text/javascript">
+if (window.addEventListener) {
+    window.addEventListener("load", ready, false);
+} else if (window.attachEvent) {
+    window.attachEvent("onload", ready);
+}
+function ready(){
+	if(document.getElementById('tag_01_tit')&&document.getElementById('tag_01_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_01_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_01_con').getElementsByTagName('ul')
+		});
+	}
+
+	if(document.getElementById('tag_02_tit')&&document.getElementById('tag_02_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_02_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_02_con').getElementsByTagName('ul')
+		});
+	}
+
+	if(document.getElementById('tag_03_tit')&&document.getElementById('tag_03_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_03_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_03_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_04_tit')&&document.getElementById('tag_04_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_04_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_04_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_05_tit')&&document.getElementById('tag_05_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_05_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_05_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_06_tit')&&document.getElementById('tag_06_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_06_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_06_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_07_tit')&&document.getElementById('tag_07_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_07_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_07_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_08_tit')&&document.getElementById('tag_08_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_08_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_08_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_09_tit')&&document.getElementById('tag_09_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_09_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_09_con').getElementsByTagName('dl')
+		});
+	}
+	if(document.getElementById('tag_10_tit')&&document.getElementById('tag_10_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_10_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_10_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_11_tit')&&document.getElementById('tag_11_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_11_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_11_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_12_tit')&&document.getElementById('tag_12_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_12_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_12_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_13_tit')&&document.getElementById('tag_13_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_13_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_13_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_14_tit')&&document.getElementById('tag_14_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_14_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_14_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_15_tit')&&document.getElementById('tag_15_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_15_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_15_con').getElementsByTagName('ul')
+		});
+	}
+	if(document.getElementById('tag_16_tit')&&document.getElementById('tag_16_con')){
+		YTabs.tabs({
+		tabs: document.getElementById('tag_16_tit').getElementsByTagName('a'),
+		contents: document.getElementById('tag_16_con').getElementsByTagName('ul')
+		});
+	}
+
+}
+
+
+
+</script>
+</head>
+
+<body>
+<div class="top">
+  <div class="top-one">
+    <div class="data"><script type="text/javascript">showdate();</script></div>
+    <h2><a href="#">English</a></h2>
+  </div>
+  <div class="top-two">
+    <ul>
+      <li><a href="#">中国教育&nbsp; &nbsp;&nbsp;|</a></li>
+      <li><a href="#">教育资源&nbsp; &nbsp;&nbsp;&nbsp;|</a></li>
+      <li><a href="#">科研发展&nbsp; &nbsp;&nbsp;&nbsp;|</a></li>
+      <li><a href="#">下一代互联网</a></li>
+      <li><a href="#">|&nbsp; &nbsp;教育信息化&nbsp; &nbsp;|</a></li>
+      <li><a href="#">CERNET &nbsp; &nbsp;|</a></li>
+      <li><a href="#">人才服务&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|</a></li>
+      <li><a href="#">教育人博客&nbsp; &nbsp;|</a></li>
+      <li><a href="#">中国教育在线</a></li>
+    </ul>
+  </div>
+  <div class="top-three">
+    <h1><a href="#">教师招聘</a><a href="#">学前</a><a href="#">小学</a><a href="#">初中</a><a href="#">高中</a><a href="#">高考</a><a href="#">自考</a><a href="#">成考</a><a href="#">考研</a><a href="#">MBA</a><a href="#">资格</a><a href="#">IT</a><a href="#">英语</a><a href="#">小语种</a><a href="#">公务员</a><a href="#">校园招聘</a><a href="#">生涯规划</a><a href="#">留学</a><a href="#">考试书店</a><a href="#">视频</a><a href="#"><strong>山西站</strong></a>  <a target="_top" href="javascript:showmore();">更多地方站</a></h1>
+	<div id="more" style="display:none;" onclick="javascript:showmore();">
+	  <ul>
+		<li><a href="#" target="_top">北京</a></li>
+		<li><a href="#" target="_top">广东</a></li>
+		<li><a href="#" target="_top">上海</a></li>
+		<li><a href="#" target="_top">山东</a></li>
+		<li><a href="#" target="_top">江苏</a></li>
+		<li><a href="#" target="_top">四川</a></li>
+		<li><a href="#" target="_top">浙江</a></li>
+		<li><a href="#" target="_top">河南</a></li>
+		<li><a href="#" target="_top">辽宁</a></li>
+		<li><a href="#" target="_top">陕西</a></li>
+		<li><a href="#" target="_top">湖北</a></li>
+		<li><a href="#" target="_top">湖南</a></li>
+		<li><a href="#" target="_top">福建</a></li>
+		<li><a href="#" target="_top">重庆</a></li>
+		<li><a href="#" target="_top">安徽</a></li>
+		<li><a href="#" target="_top">河北</a></li>
+		<li><a href="#" target="_top">山西</a></li>
+		<li><a href="#" target="_top">广西</a></li>
+		<li><a href="#" target="_top">江西</a></li>
+		<li><a href="#" target="_top">甘肃</a></li>
+		<li><a href="#" target="_top">天津</a></li>
+		<li><a href="#" target="_top">贵州</a></li>
+		<li><a href="#" target="_top">吉林</a></li>
+		<li><a href="#" target="_top">海南</a></li>
+		<li><a href="#" target="_top">云南</a></li>
+		<li><a href="#" target="_top">新疆</a></li>
+		<li><a href="#" target="_top">宁夏</a></li>
+		<li><a href="#" target="_top">青海</a></li>
+		<li><a href="#" target="_top">西藏</a></li>
+		<li><a href="#" target="_top">黑龙江</a></li>
+		<li><a href="#" target="_top">内蒙古</a></li>
+	  </ul>
+	</div>
+  </div>
+</div>
+<div class="main">
+  <div class="zuo">
+    <div class="zuo-one">
+      <div class="left">
+        <div class="jybzq"><p><span><a href="#">发布会</a> <a href="#">部委动态</a> <a href="#">领导活动</a></span><a href="#">教育部专区</a></p>
+        </div>
+        <div class="zqliebiao">
+          <ul>
+			<li>[<a href="#">部委动态</a>] <a href="#">教育部公布研究生考试举报电话</a></li>
+		    <li>[<a href="#">部委动态</a>]  <a href="#">四六级考试采用"多题多卷"模式</a></li>						
+			<li>[<a href="#">部委动态</a>] <a href="#">"六项"机制加强高校科研管理</a></li>			
+			<li>[<a href="#">信息化</a>] <a href="#">国家开放大学城市支持与合作联盟成立</a></li>			
+            <li>[<a href="#">信息化</a>] <a href="#">宜昌1.12亿建成6600多班班通教学班</a></li>	
+		<li>[<a href="#">信息化</a>] <a href="#">我国职教信息化面临"建多用少"问题</a></li>																			
+		  </ul>
+        </div>
+      </div>
+      <div class="right">
+          <div class="pic" id="fc">
+            <div style="display: block;"><a href="#"><img src="images/CNGI.jpg" alt="CNGI项目验收" onmouseover="clearAuto();" onmouseout="setAuto()" border="0" height="160" width="150"></a></div>
+            <div style="display: none;"><a href="#"><img src="images/150_160.jpg" alt="2012年度教育盛典" onmouseover="clearAuto();" onmouseout="setAuto()" border="0" height="160" width="150"></a></div>
+            <div style="display: none;"><a href="#"><img src="images/xbgydxzp150160.gif" alt="西北工业大学诚聘高层次人才" onmouseover="clearAuto();" onmouseout="setAuto()" border="0" height="160" width="150"></a>
+          </div>
+   		  <script type="text/javascript" src="js/focus.js"></script>
+        </div>
+        <div class="toutiao">
+           <h1><a href="#">我国下一代互联网大规模应用<br>成功走完第一步</a></h1>
+		   <ul>
+			<li><a href="#">义务教育学校校长专业标准</a> <a href="#">征求意见</a> <a href="#">答记者问</a></li>
+            <li><a href="#">我国将于明年起全面监测学生体质</a> <a href="#" target="_blank">实行1票否决</a></li>
+		    <li><a href="#">高校与研究院所联合培养博士规模将进一步扩大</a></li>
+		    <li><a href="#"><font color="red">GCT成绩查询</font></a> <a href="#">入口方式</a> <a href="#"><font color="red">复试分数线</font></a> <a href="#">平均成绩</a></li>			   		 		 
+           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="zuo-two">
+      <div class="left">
+        <div class="tag_02_title" id="tag_02_tit"><a class=" current" href="#">网络研究</a><a href="#">IPv6</a><a href="#">教育科研</a></div>
+		<div class="wlyj" id="tag_02_con">
+			<ul style="display: block;">
+			<li><a href="#"><font color="red">我国下一代互联网过渡技术取得重大进展</font></a></li>
+			<li><a href="#">CERNET主干网升级扩容工程取得重大突破</a></li>
+			<li><a href="#">CERNET第十九届学术年会</a>   <a href="#"><font color="red">会议资料下载</font></a></li>			
+			<li><a href="#">清华大学吴建平教授：大情怀 赤子心</a></li>																					
+			<li><a href="#">新增10G线路：中美联手推动下一代互联网</a></li>			
+			<li><a href="#">CERNET免费地址列表变更通知(2012.12)</a></li>				
+			</ul>
+			<ul style="display: none;" class="undis">
+			<li><a href="#">赛尔网络推出IPv6信息服务</a></li>
+			<li><a href="#">下一代互联网明年投入商用 投资达2000亿</a></li>
+			<li><a href="#">无锡成全国首个通IPv6城市 明年全网覆盖</a></li>	
+			<li><a href="#">邬贺铨谈IPv6：需确保现网IPv4用户体验</a></li>
+			<li><a href="#">下一代互联网IPv6的信息安全特性</a></li>																								
+			<li><a href="#">新增10G线路：中美联手推动下一代互联网</a></li>											
+			</ul>
+			<ul style="display: none;" class="undis">
+			<li><a href="#">教育部科学技术研究重大项目立项项目名单</a></li>
+            <li><a href="#">2012年度吴瑞奖学金的获奖人名单公布</a></li>
+            <li><a href="#">2012年度"香江学者计划"名单公布</a></li>
+            <li><a href="#">2012年度NSFC申请项目评审结果通告</a></li>
+            <li><a href="#">2012国家杰青基金建议资助名单公布</a></li>
+            <li><a href="#">首批青年拔尖人才支持计划人选名单</a></li>
+     		</ul>
+
+</div>
+      </div>
+      <div class="right">
+        <h2><span><marquee onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="75" scrollamount="3" style="width:320px;margin-right:5px;"><a href="#" title="学习宣传贯彻党的十八大精神">学习宣传贯彻党的十八大精神</a>　　<a href="#" title="教育十二五规划发布">教育"十二五"规划发布 </a>　　<a href="#" title="教育信息化十年发展规划">教育信息化十年发展规划解读</a>　　<a title="网络视频公开课" href="#">网络视频公开课导航</a>　　<a href="#" title="网络开放资源">网络开放资源平台开通</a></marquee></span>综合资讯</h2>
+        <ul>
+		 <li>[<a href="#">综合新闻</a>]&nbsp;&nbsp;<a href="#">研究生求职为何不敌本专科生</a>　<a href="#">2013考研准考证下载打印入口</a></li>			
+		 <li>[<a href="#">高教新闻</a>]&nbsp;&nbsp;<a href="#">教育部与中国工程院开展合作</a>　<a href="#">北京19家商贸职校将互认学分</a></li>			
+         <li>[<a href="#">教育研究</a>]&nbsp;&nbsp;<a href="#">努力推动教师队伍建设科学发展</a>　<a href="#">提高青少年体质健康水平</a></li>	
+		 <li>[<a href="#">学前新闻</a>]&nbsp;&nbsp;<a href="#">江西幼儿园校车落水致11幼童遇难</a>　<a href="#">京一民办幼儿园锅炉爆炸</a></li>	
+         <li>[<a href="#">学前新闻</a>]&nbsp;&nbsp;<a href="#">广州公办幼儿园"赞助费"将全退</a>　<a href="#">湖南贫困幼儿每年补助千元</a></li>
+		 <li>[<a href="#">基教新闻</a>]&nbsp;&nbsp;<a href="#">湖南异地高考只需父母居住证</a>　<a href="#">华侨大学"厦航学院"成立</a></li>			
+ 		</ul>
+      </div>
+    </div>
+    <div class="pic">
+      <div id="picad2" style="display: none;"><a href="#"><img src="images/720cernet2012.gif" border="0" height="90" width="720"></a></div>
+      <div style="display: block;" id="picad1"><a href="#"><img src="images/zhaokxx.jpg" border="0" height="90" width="720"></a></div>
+      <script>
+var an=1,ap=5000;
+function opup(value){
+		for(i=1;i<3;i++){
+			i==value?document.getElementById('picad'+i).style.display="block":document.getElementById('picad'+i).style.display="none";
+		}
+}
+function opusetAuto(){setInterval("opuauto()", ap)}
+function opuauto(){
+	an++;
+	if(an>2) an=1;
+	opup(an);
+} 
+opusetAuto(); 
+</script>
+    </div>
+    <div class="zuo-three">
+      <div class="zgjy"><h1><a href="#">中国教育</a></h1></div>
+      <div class="left">
+        <div class="jygz"><h1><span><a href="#">更多&gt;&gt;</a></span>教育关注</h1></div>
+        <div class="pic"><a href="#"><img src="images/18da80.jpg" width="80" height="80" /></a>
+          <p><span><a href="#">教育系统学习宣传贯彻党的十八大精神</a></span></p><p>　　党的十八大胜利召开，教育系统认真学习贯彻党的十八大精神，中国教育频道追踪报道教育系统学习宣传贯彻十八大精神实况...[<a href="#">详细</a>]</p>
+        </div>
+        <div class="gz">
+          <p><a href="#">专题</a>：<a href="#">教育十二五规划</a>　<a href="#">学生资助政策</a>　<a href="#">莫言获诺贝尔文学奖</a></p></div>
+      </div>
+      <div class="right">
+        <div class="tag_04_title" id="tag_04_tit"><a class=" current" href="#">教育新闻</a><a href="#">教育评论</a></div>
+        <div class="jyyj"><a href="#">教育研究</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">教育专题</a></div>
+        <div class="empty35"></div>
+        <div id="tag_04_con">
+		  <ul style="display: block;">
+			<li><a href="#">福建明年"专升本"招生院校增至23所 照顾政策变</a></li>
+			<li><a href="#">义务教育学校校长专业标准(试行)征求意见启事</a></li>
+			<li><a href="#">义务教育学校校长专业标准（试行）</a></li>
+			<li><a href="#">北京一所民办幼儿园锅炉爆炸致5名儿童受伤</a></li>
+			<li><a href="#">教育部与中国工程院签署战略合作协议培养人才</a></li>
+      	  </ul>
+		  <ul style="display: none;" class="undis">
+			<li><a href="#">求职场同台竞技，高学历"敲门"为何不灵了？</a></li>
+			<li><a href="#">三次深入福建晋江探访 异地高中班 能够走多远</a></li>
+			<li><a href="#">高校青年教师面临困境 挣扎在科研和生存压力中</a></li>
+			<li><a href="#">合理布局使每个幼儿都能就近入园</a></li>
+			<li><a href="#">微博：家长的新型"监视器"？</a></li>
+		  </ul>
+		</div>
+      </div>
+    </div>
+    <div class="zuo-four">
+      <div class="left">
+        <div class="kyfz"><h1><a href="#">科研发展</a></h1></div>
+        <div class="tag_05_title" id="tag_05_tit"><a class=" current" href="#">高校资讯</a><a href="#">科技前沿</a><a href="#">成果展示</a><a href="#">学术会议</a></div>
+        <div id="tag_05_con">
+          <ul style="display: block;">
+            <li><a href="#">香港大学揭开抗衰老之谜 望10年内推新药以延寿</a></li>
+            <li><a href="#">宁波大学等成功研制出一种治疗败血症的新方法</a></li>
+            <li><a href="#">复旦上海交大等共同组建代谢性疾病协同创新中心</a></li>
+            <li><a href="#">中国地质大学(武汉)1项目获中国高校十大科技进展</a></li>
+            <li><a href="#">清华李路明1项目入选中国高等学校十大科技进展</a></li>
+            </ul>
+          <ul style="display: none;" class="undis">
+            <li><a href="#">天文学家发现"超级地球"</a></li>
+            <li><a href="#">2012年度十个重大科学发现：发现罕见的变异体</a></li>
+            <li><a href="#">基于mRNA的新型疫苗有望成为"万能流感疫苗"</a></li>
+            <li><a href="#">美国科学家研究称：尸体或成干细胞重要来源</a></li>
+            <li><a href="#">《自然》回顾2012年科学事件：最后的希格斯</a></li>
+            </ul>
+          <ul style="display: none;" class="undis">
+            <li><a href="#">西安交大自制特的高压交直流套管达国际领先水平</a></li>
+            <li><a href="#">清华大学揭秘presenilin/SPP家族膜内蛋白酶结构</a></li>
+            <li><a href="#">安徽医科大学成立疑难重症皮肤病协同创新中心</a></li>
+            <li><a href="#">上海交大科学家发现肥胖直接"元凶"阴沟肠杆菌</a></li>
+            <li><a href="#">我国科学家描绘出熊猫完整的演化史轮廓</a></li>
+            </ul>
+          <ul style="display: none;" class="undis">
+            <li><a href="#">中国矿业大学联办2012年北京国际生态修复论坛</a></li>
+            <li><a href="#">南京大学联办第七届科技信息资源共享促进国际会议</a></li>
+            <li><a href="#">第四届石墨烯研究最新进展国际会议在京顺利召开</a></li>
+            <li><a href="#">"学术期刊与学术评价论坛"在中国人民大学举行</a></li>
+            <li><a href="#">西北农林科大承办中国园艺学会2012年学术年会</a></li>
+            </ul>
+          </div>
+      </div>
+      <div class="right">
+        <div class="jyxxh"><h1><a href="#">教育信息化</a><span><a href="#">网络应用选购平台</a></span></h1></div>
+        <div class="tag_05_title" id="tag_06_tit"><a class=" current" href="#">行业热点</a><a href="#">专家观点</a><a href="#" style="letter-spacing: -1px;">CERNET服务</a><a href="#">技术论坛</a></div>
+        <div id="tag_06_con">
+		  <ul style="display: block;">
+			<li><a href="#">清华大学与中国电信共同研发下一代互联网受赞誉</a></li>
+			<li><a href="#">2012重庆市高校教育信息化建设工作会召开</a></li>									
+			<li><a href="#">昆明市全面启动教育信息化建设工程</a></li>
+			<li><a href="#">我国下一代互联网过渡技术取得重大进展</a></li>											
+			<li><a href="#"><font color="red">CERNET主干网升级扩容工程建设已取得阶段性重大突破</font></a></li>
+			</ul>
+		  <ul style="display: none;" class="undis">
+			<li><a href="#">邬贺铨谈IPv6方向：需确保现网IPv4用户体验</a></li>
+			<li><a href="#">厦门大学计国君：信息化走出"守门员"误区</a></li>
+			<li><a href="#">余胜泉：信息技术与教育融合推进教育创新</a></li>
+            <li><a href="#">黄荣怀：智慧学习环境重塑校园学习生态</a></li>
+			<li><a href="#">国务院参事汤敏：跟上网络教育2.0革命</a></li>
+			
+			</ul>
+<ul style="display: none;" class="undis">
+				<li><a href="#">CERNET免费地址列表变更通知(2012.12)</a></li>
+				<li><a href="#">CCERT月报：Oracle数据库认证漏洞将致用户口令破解</a></li>
+				<li><a href="#">NIC月报：9月欧洲IPv4地址分配进入耗尽第二阶段</a></li>
+				<li><a href="#">NOC月报：9月CERNET流量恢复正常水平</a></li>				
+				<li><a href="#">6NOC月报：9月CNGI-CERNET2入出流量环比大幅增长</a></li>
+			</ul>
+		  <ul style="display: none;" class="undis">			
+			<li><a href="#"><font color="red">CERNET第十九届学术年会暨会员代表大会（山西太原）</font></a></li>
+			<li><a href="#">2012年高校数据中心建设与发展研讨会</a></li>	
+			<li><a href="#">百余所高校加入"互联网应用创新开放平台联盟"</a></li>											
+			<li><a href="#">2012首届教育云平台与教育城域网建设与发展论坛</a></li>
+			<li><a href="#">2012数字校园创新论坛暨教育信息化十年发展规划研讨会</a></li>	
+			</ul>
+</div>
+      </div>
+    </div>
+    <div class="zuo-five">
+      <div class="shang"><h1><a href="#">人才服务</a></h1></div>
+      <div class="xia">
+        <div class="left">
+          <div class="tag_05_title" id="tag_11_tit"><a class=" current" href="http://teacher.eol.cn/">高端人才</a><a href="http://teacher.eol.cn/zhongxiaoxue/" style="letter-spacing: -1px;">中小学教师</a><a href="http://teacher.eol.cn/jiao_yu_jv_zhao_pin_9326/" style="letter-spacing: -1px;"> 教育局招聘</a><a href="http://teacher.eol.cn/youshi/">幼儿教师</a></div>
+          <div id="tag_11_con">
+			<ul style="display: block;">
+								<li>高校高端人才招聘：<a href="http://teacher.eol.cn/html/t/info/cksp.shtml">长江学者</a> <a href="http://teacher.eol.cn/html/t/info/haiwaizhaopin.shtml">海外人才</a> <a href="http://teacher.eol.cn/html/t/info/xuekedaitou.shtml">学科带头</a> <a href="http://teacher.eol.cn/html/t/info/yuanzhang.shtml">院长</a></li>
+				<li>高校招聘信息按学历分：<a href="http://teacher.eol.cn/html/t/info/zhuankezhaopin.shtml">专科篇</a> <a href="http://teacher.eol.cn/html/t/info/benkezhaopin.shtml">本科篇</a> <a href="http://teacher.eol.cn/html/t/info/shuoshizhaopin.shtml">硕士篇</a> <a href="http://teacher.eol.cn/html/t/info/index.shtml">博士篇</a></li>
+				<li>高校招聘信息按岗位分：<a href="http://teacher.eol.cn/html/t/info/fudaoyuan.shtml">辅导员</a> <a href="http://teacher.eol.cn/html/t/info/xingzhengzhaopin.shtml">行政管理</a> <a href="http://teacher.eol.cn/html/t/info/shiyanyuanzhaopin.shtml">实验员</a></li>
+				<li>高校招聘信息按院校分：<a href="http://teacher.eol.cn/html/t/info/211gaoxiao.shtml">985、211院校</a> <a href="http://teacher.eol.cn/html/t/info/putongbenke.shtml">普通本科院校</a></li>
+<li>高校招聘信息按院校分：<a href="http://teacher.eol.cn/html/t/info/gaozhigaozhuan.shtml">高职高专</a> <a href="http://teacher.eol.cn/html/t/info/duliyuanxiao.shtml">独立院校</a> <a href="http://teacher.eol.cn/html/t/info/minbanyuanxiao.shtml">民办高校</a></li>
+
+			</ul>
+			<ul style="display: none;" class="undis">	
+			<li><a href="#">天津经济技术开发区2013年教师招聘宣讲流程</a></li>
+			<li><a href="#">湖北宜昌金东方学校高中2013年教师招聘</a></li>
+			<li><a href="#">贵州习水县教育局2013年招聘职业教育高中教师</a></li>
+			<li><a href="#">山东成武县教育局2013年招聘100名教师</a></li>
+			<li><a href="#">江苏苏州市实验小学教育集团2013年教师招聘</a></li>
+			</ul>
+			<ul style="display: none;" class="undis">	
+			<li><a href="#">广东珠海高新区教育局2013年招聘10名公办教师</a></li>
+			<li><a href="#">贵州习水县教育局2013年招聘职业教育高中教师</a></li>
+			<li><a href="#">山东成武县教育局2013年招聘100名教师</a></li>
+			<li><a href="#">江苏南京市江宁区教育局2013年教师招聘计划</a></li>
+			<li><a href="#">2013年湖南洞口县教育局招聘高中、职校教师简章</a></li>
+			</ul>
+			<ul style="display: none;" class="undis">	
+			<li><a href="#">广东顺德北滘第二幼儿园2013年教师招聘</a></li>
+			<li><a href="#">贵州玉屏侗族自治县教育局2013招聘35名幼儿教师</a></li>
+			<li><a href="#">广州市幼儿师范学校附属幼儿园招聘教师</a></li>
+			<li><a href="#">江苏盐城市米奇幼儿园2013年招聘教师</a></li>
+			<li><a href="#">广东深圳市南山区大新幼儿园2013年教师招聘</a></li>
+			</ul>
+		</div>
+        </div>
+        <div class="right">
+          <div class="tag_04_title" id="tag_07_tit"><a class=" current" href="#">人才资讯</a><a href="#">热点评说</a></div>
+		  <div class="rcjh"><a href="#">人才计划</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">热点专题</a></div>
+          <div class="empty30"></div>
+          <div id="tag_07_con">
+			<ul style="display: block;">
+			<li><a href="#">高校与研究院所联合培养博士规模2013年将扩大</a></li>
+			<li><a href="#">我国累计招收博士后10万余人</a></li>
+			<li><a href="#">2013年度"中国金融学科终身成就奖"颁奖</a></li>
+			<li><a href="#">全国博士后管理信息网络将于12月25日进行系统维护</a></li>
+			<li><a href="#">关于增补和更新中国博士后科学基金评审专家的通知</a></li>
+			</ul>
+			<ul style="display: none;" class="undis">	
+			<li><a href="#">袁贵仁谈学生体质的重要性：体质不强 何谈栋梁</a></li>
+			<li><a href="#">全球化：教师应具备怎样的观念和能力？</a></li>
+			<li><a href="#">高校青年教师之困：高压之下，发展之路在何方？</a></li>
+			<li><a href="#">山东"新政"能否阻特级教师变味</a></li>
+			<li><a href="#">教书人不读书怎么教书</a></li>
+			</ul>
+		</div>
+        </div>
+      </div>
+    </div>
+    <div class="zuo-six">
+      <div class="shang"><h1><a href="#">中国教育人博客</a><span><a href="#">博客注册</a><a href="#">|登录博客</a></span></h1></div>
+      <div class="xia">
+        <div class="left">
+          <div class="tag_06_title" id="tag_09_tit"><a class=" current" href="#">博客推荐</a><a style="width:60" href="#">博客圈</a></div>
+          <div class="bkzx">&gt;&gt;&nbsp;<a href="#">博客之星</a></div>
+          <div id="tag_09_con">
+			<dl style="display: block;">
+			<div class="left">
+			  <div class="pic">
+			  <a href="#"><img src="images/wenxue.jpg" width="80" height="80" /></a>
+			  <p align="center"><a href="#">文学少年圈</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			  </div>
+			<div class="right">
+			  <p><a href="#"><span>教育人博客征集新春寄语</span></a></p>
+              <p><a href="#">"龙含宝珠辞旧岁，蛇吐瑞气贺新春"2013年新年已翩然而至，新的一年承载新的希望；新的一年书写新</a>...[<a href="#">&gt;&gt;</a>]</p></div>
+			</div>
+			<div class="name">
+			<p>[&nbsp;<a href="#">王福明</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">谭小潭</a>&nbsp;]</p>
+            <p>[&nbsp;<a href="#">武雪民</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">张如意</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">丁永明</a>&nbsp;]</p>
+			</div>
+			</dl>
+			<dl style="display: none;" class="undis">
+			<div class="left">
+			<div class="pic">
+			 <a href="#"><img src="images/blog-sdgxzw.jpg" width="80" height="80" /></a>
+			 <p align="center"><a href="#">博客推荐</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			</div>
+			<div class="right">
+			<p><a href="#"><span>教育人博客精彩活动</span></a></p>
+            <p><a href="#">中国教育人博客从成立以来，受到了广大师生的一直好评。也吸引了各高</a>...[<a href="#">进入活动</a>]			</p></div>
+			</div>
+			<div class="name">
+			<p>[&nbsp;<a href="#">实验教学圈</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">教师成长圈</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">班主任园地</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">家庭教育圈</a>&nbsp;]</p>
+			<p>[&nbsp;<a href="#">英语学习圈</a>&nbsp;]</p>
+			</div>
+			</dl>
+		</div>
+        </div>
+        <div class="right">
+          <div class="tag_04_title" id="tag_08_tit"><a class=" current" href="#">博闻博论</a><a href="#">教师分享</a></div>
+          <div class="txjy"><a href="#">天下教育</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">家庭教育</a></div>
+          <div class="empty30"></div>
+          <div id="tag_08_con">
+			<ul style="display: block;">
+				<li><a href="#"><span>丁海明</span></a><a href="#">【教育感悟】教育要让学生懂得学习</a></li>
+                <li><a href="#"><span>平湖一柱</span></a><a href="#">孩子下跪 教育蒙羞</a></li>
+                <li><a href="#"><span>田园泥土香</span></a><a href="#">大学生村官为何不闻田园泥土香？</a></li>
+                <li><a href="#"><span>赛尔老王</span></a><a href="#">石家庄学前教育教师缺口大 毕业生</a></li>
+                <li><a href="#"><span>神龙跨三江</span></a><a href="#">教师须有"四大品位"</a></li>
+			</ul>
+			<ul style="display: none;" class="undis">
+				<li><a href="#"><span>乌江</span></a><a href="#">【老班札记】让学生拥有一双发现美</a></li>
+                <li><a href="#"><span>丁海明</span></a><a href="#">【教育感悟】教育要让学生懂得学习</a></li>
+                <li><a href="#"><span>成方1201</span></a><a href="#">浅谈如何上好政治"家常课"</a></li>
+                <li><a href="#"><span>冰雕的玫瑰</span></a><a href="#">我对271高效课堂模式的认识</a></li>
+                <li><a href="#"><span>bx007</span></a><a href="#">"秒杀"你的班级</a></li>
+			</ul>
+		</div>
+        </div>
+      </div>
+    </div>
+    <div class="zuo-seven">
+      <div class="shang"><h1><a href="#">资源中心</a><span><a href="#">开放资源平台</a></span></h1></div>
+      <div class="xia">
+        <div class="left">
+          <div class="tag_05_title" id="tag_10_tit"><a class=" current" href="#">教育黄页</a><a href="#">网络资源</a><a href="#">高校排名</a><a href="#">院校数据</a></div>
+          <div id="tag_10_con">
+			<ul style="display: block;" class="floatl">
+				<li><a href="#">中国大学</a></li>
+				<li><a href="#">中国小学</a></li>
+				<li><a href="#">中国中学</a></li>
+				<li><a href="#">幼 儿 园</a></li>
+				<li><a href="#">职业学校</a></li>				
+				<li><a href="#">MBA 站点</a></li>				
+				<li><a href="#">教育站点</a></li>
+				<li><a href="#">考试站点</a></li>	
+				<li><a href="#">211 镜像</a></li>
+				<li><a href="#">在线培训</a></li>
+				<li><a href="#">教育机构</a></li>			
+				<li><a href="#">国外大学</a></li>
+				<li><a href="#">网上学校</a></li>
+				<li><a href="#">专门学科</a></li>
+				<li><a href="#">科研机构</a></li>
+				<li><a href="#">科研站点</a></li>
+				<li><a href="#">图 书 馆</a></li>
+				<li><a href="#">娱乐站点</a></li>
+				<li><a href="#">聊 天 室</a></li>
+				<li><a href="#">BBS 站点</a></li>
+
+			</ul>
+			<ul style="display: none;" class="undis">
+				<li><a href="#">2011高考试题：</a><a href="#">全国卷</a> <a href="#">新课标</a> <a href="#">江苏卷</a> <a href="#">山东卷</a> <a href="#">湖南卷</a></li>
+				<li><a href="#">2011高考答案：</a><a href="#">全国卷</a> <a href="#">新课标</a> <a href="#">江苏卷</a> <a href="#">山东卷</a> <a href="#">湖南卷</a></li>
+				<li><a href="#">2011中考试题：</a><a href="#">北京</a> <a href="#">浙江</a> <a href="#">四川</a> <a href="#">湖北</a> <a href="#">安徽</a> <a href="#">重庆</a> <a href="#">福建</a></li>
+				<li><a href="#">2011中考试题：</a><a href="#">江苏</a> <a href="#">广东</a> <a href="#">山东</a> <a href="#">辽宁</a> <a href="#">江西</a> <a href="#">上海</a> <a href="#">湖南</a></li>
+				<li><a href="#">考研真题</a> <a href="#">教师资格试题库</a> <a href="#">特岗教师真题</a> <a href="#">公务员试题</a></li>
+			</ul>
+			<ul style="display: none;" class="undis">
+			<li><a href="#">2012年11月各高校三星级以上论文所占比例排序</a></li>
+			  <li><a href="#">2012年11月份高校在线发表论文星级统计排序</a></li>
+			  <li><a href="#">2012年11月份各高校在线发表论文数量统计排序</a></li>
+			  <li><a href="#">11月份科技论文在线优秀学者专栏浏览次数统计</a></li>
+			  <li><a href="#">优秀学者及论著栏目学者人数统计排序(11月份)</a></li>
+			</ul>
+<ul style="display: none;" class="undis">
+				<li><a href="#">大学名单</a>　<a href="#">中央部属</a>　<a href="#">985 工程</a>　<a href="#">211 工程</a>　<a href="#">教育部直属</a></li>
+				<li><a href="#">本科院校</a>　<a href="#">高职高专</a>　<a href="#">独立学院</a>　<a href="#">民办大学</a>　<a href="#">中外合作办学</a></li>
+				<li><a href="#" style="color:brown;">综合类</a>　<a href="#" style="color:brown;">理工类</a>　<a href="#" style="color:brown;">师范类</a>　<a href="#" style="color:brown;">财经类</a>　<a href="http://gkcx.eol.cn/schoolInfoSearch/zhengfa/zhengfa_1.htm" style="color:brown;">政法类</a>　<a href="#" style="color:brown;">体育类</a></li>
+				<li><a href="#" style="color:brown;">外语类</a>　<a href="#" style="color:brown;">医科类</a>　<a href="#" style="color:brown;">农林类</a>　<a href="#" style="color:brown;">民族类</a>　<a href="#" style="color:brown;">艺术类</a>　<a href="#" style="color:brown;">高中数据库</a></li>
+				<li><a href="#">小学数据库</a>　<a href="#">初中数据库</a>　<a href="#">中考查分</a>　<a href="#">2010全国中考分数线</a></li>
+			</ul>
+		</div>
+        </div>
+        <div class="right">
+          <h2>重点数据库查询</h2>
+          <ul>
+            <li><a href="#"><img src="images/kyzj.jpg" width="55" height="75" /></a>
+            <p><a href="#" >科研专家</a></p></li>
+            <li><a href="#"><img src="images/cksp.gif" width="55" height="75" /></a>
+            <p><a href="#">长江学者</a></p></li>
+            <li><a href="#"><img src="images/boshihou.gif" width="55" height="75" /></a>
+            <p><a href="#">博士后站点</a></p></li>
+            <li><a href="#"><img src="images/zcfg.jpg" width="55" height="75" /></a>
+            <p><a href="#">政策法规</a></p></li>
+            <li><a href="#"><img src="images/tjsj.jpg" width="55" height="75" /></a>
+            <p><a href="#">统计数据</a></p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="you">
+    <div class="you-one">
+      <div class="img"><a href="#"><img src="images/top_right.jpg" width="93" height="29" /></a></div>
+      <div class="tag_01_title" id="tag_01_tit">
+		<a class=" current" href="#" onclick="return false">找工作</a><a href="#" style="margin-right: 0;" onclick="return false">找人才</a>
+	  </div>
+      <div class="right1" id="tag_01_con">
+        <div class="empty"></div>
+		<ul style="display: block;">
+          <form>
+          <li><h2>岗位</h2>
+					<select class="select-you-one">
+						<option selected="selected">不限</option>
+						<option>教师与科研人员</option>
+						<option>技术类</option>
+						<option>长江学者 </option>
+						<option>特聘教授 </option>
+						<option>学科带头人/学科骨干 </option>
+						<option>管理人员 </option>
+						<option>行政教务与后勤 </option>
+						<option>职教与培训类 </option>
+						<option>科研院所类 </option>
+						<option>兼职教师 </option>
+						</select>
+					<h2>地区</h2>
+					<select class="select-you-one">
+						<option selected="selected">不限</option>
+						<option>北京 </option>
+						<option>天津 </option>
+						<option>河北 </option>
+						<option>山西 </option>
+						<option>内蒙古 </option>
+						<option>辽宁 </option>
+						<option>吉林 </option>
+						<option>黑龙江 </option>
+						<option>上海 </option>
+						<option>江苏 </option>
+						<option>浙江 </option>
+						<option>安徽 </option>
+						<option>福建 </option>
+						<option>江西 </option>
+						<option>山东 </option>
+						<option>河南 </option>
+						<option>湖北 </option>
+						<option>湖南 </option>
+						<option>广东 </option>
+						<option>广西 </option>
+						<option>海南 </option>
+						<option>重庆 </option>
+						<option>四川 </option>
+						<option>贵州 </option>
+						<option>云南 </option>
+						<option>西藏 </option>
+						<option>陕西 </option>
+						<option>甘肃 </option>
+						<option>青海 </option>
+						<option>宁夏 </option>
+						<option>新疆 </option>
+						<option>台湾 </option>
+						<option>香港 </option>
+						<option>澳门 </option>
+						<option>国外 </option>
+					</select>
+				</li>
+				<li>
+					<h2>学科</h2>
+					<input class="text-you-one"onfocus="this.select()" onblur="if (value ==''){value='输入学科专业关键词'}" onclick="if(this.value=='输入学科专业关键词')this.value=''" onmouseover="this.focus()" value="输入学科专业关键词" type="text">
+				</li>
+				<input src="images/chaxun.jpg" class="img-you-one" type="image">
+			</form>
+        </ul>
+        <ul style="display: none;" class="undis">
+<form>
+				<li><h2>学历</h2>
+					<select class="select-you-one">
+						<option selected="selected">不限</option>
+						<option>大专及以下</option>
+						<option>本科</option>
+						<option>硕士研究生</option>
+						<option>博士研究生</option>
+					</select>
+					<h2>职务</h2>
+					<select class="select-you-one">
+						<option selected="selected">不限</option>
+						<option>正高</option>
+						<option>副高</option>
+						<option>中级</option>
+						<option>初级</option>
+					</select>
+				</li>
+				<li><h2>专业</h2>
+					<input class="text-you-one"onfocus="this.select()" onblur="if (value ==''){value='输入学科专业关键词'}" onclick="if(this.value=='输入学科专业关键词')this.value=''" onmouseover="this.focus()" value="输入学科专业关键词" type="text">
+				</li>
+				<input src="images/chaxun.jpg" class="img-you-one" type="image">
+			</form>
+		</ul> 
+      </div>
+      <div class="empty"></div>
+      <div class="jyzy"><a href="#"><img src="images/img_ziyuan.jpg" width="75" height="22" /></a><a href="#">教育规划纲要</a> | <a href="#" style="color:red;">公开课</a>
+      </div>
+      <div class="empty"></div>
+      <div class="kong"></div>
+      <form>
+        <select class="select-you-two">
+            	<option selected="selected">公开课</option>
+				<option>教育资源</option>
+				<option>科研专家</option>
+				<option>政策法规</option>
+		</select>
+       <input type="text" class="text-you-two">
+       <input type="image" src="images/chaxun01.jpg" class="img-you-two">  
+      </form>
+    </div>
+    <div class="you-two">
+      <div class="tag_03_title" id="tag_03_tit"><a class=" current" href="#" onclick="return false">招生招聘</a><a href="#" onclick="return false">校园热点</a>
+      </div>
+      <div class="you-qh" id="tag_03_con">
+			<ul style="display: block;">
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#"><strong>高校海外人才网络视频招聘会</strong></a></li>
+                <li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">中国人民大学2013年度招聘启事</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" style="letter-spacing:-1px">重庆市科学技术研究院聘高层次人才</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" style="letter-spacing:-1px">南京农业大学2013年诚聘高层次人才</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" style="letter-spacing:-1px">武汉工程大学2012-2013年人才招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京服装学院2013年教师招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京航空航天大学2013年教师招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" style="letter-spacing:-1px">武汉纺织大学2013年引进高层次人才</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">中国政法大学面向海内外招聘院长</a></li>
+				<p class="xx"></p>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">四川师范大学2013诚聘英才</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京交通大学招聘启事</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">中国石油大学(北京)2013年招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京农学院2012年公开招聘公告</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" style="letter-spacing:-1px">北京化工大学2012年度人才招聘启示</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">空军工程大学2013研究生招生</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">解读：教育信息化十年发展规划</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育部印发教育"十二五"规划</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">全球全面启用IPv6 这次绝不退回</a></li>
+				<p class="xx"></p>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育信息化十年发展规划发布</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">2012开学第一课：美在你身边</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">国家学生资助政策及成效解读</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">2012年本科教学工程建设项目</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育科学十二五2012课题指南</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">聚焦：教育维权 我们在行动</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育维权手册 举报投诉必备</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">2012两会教育盘点：关注教育</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">2012两会热议 开启教育新篇章</a></li>
+			</ul>
+			<ul style="display: none;" class="undis">
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" style="letter-spacing:-1px">中国矿业大学(北京)2013年教师招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京联合大学2013年教师招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京中医药大学2013年人事招聘</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">首都师范大学2013年硕士招生</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京工业大学2012年招聘公告</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京理工大学2013年招聘启事</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">中央民族大学2013年度招聘启事</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">2012中职教育中医类专业点名单</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">自费出国留学中介服务机构名单</a></li>
+				<p class="xx"></p>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">中小学财务制度(征求意见稿)</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">中小学社会实践基地建管规范</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">农村义务教育学校食堂管理办法</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">本科学校创业教育教学基本要求</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">"国培计划"课程标准(试行)</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">《3-6岁儿童学习与发展指南》</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">精品资源共享课建设实施办法</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">促进民办教育健康发展实施意见</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">三部门推行普通高中学生资助卡</a></li>
+				<p class="xx"></p>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">第2批国家级中职示范校建设计划</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">学位论文作假行为暂行处理办法</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">国务院颁布《教育督导条例》</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">《汉语拼音正词法基本规则》发布</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">新本科专业目录和专业设置新规</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">北京市幼儿园新收费标准出台</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">透视职称评审制度 系列报道</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育部：2012普通高等学校名单</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">美国公布全球野鸡大学新黑名单</a></li>
+			</ul>
+		</div>
+    </div>
+    <div class="you-three">
+      <h1>特色服务</h1>
+      <div class="liebiao">
+        <ul>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">就业岗位信息超市</a>   <img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" >就业视频面试</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" \="">招生体检中心</a>   <img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" >研究生招生系统</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教师招聘系统</a> <img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#" >网站统计系统</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">高等教育网络课程</a> <img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#"style="color:#FF0000;">IPv6信息服务</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">热线咨询语音平台</a> </li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育信息门户解决方案</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">高校数字校园解决方案</a></li>
+
+			</ul>
+      </div>
+    </div>
+    <div class="you-four">
+      <h1>特色资源</h1>
+      <div class="liebiao">
+        <ul>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">数字博物馆</a>　　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育科研网格</a></li>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">数字图书馆</a>　　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">重点学科信息</a></li>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">CERNET高速资源</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">专利查询</a></li>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">网络公开课</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">省部产学研网</a></li>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">学术会议在线</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">科技论文在线</a></li>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">特聘教授专区</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">考研报考系统</a></li>
+			<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">教育资源中心</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">艺术视频资源包</a></li>
+		</ul>
+      </div>
+    </div>
+    <div class="you-five">
+      <h1>学习服务</h1>
+      <div class="liebiao">
+        <ul>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">全国中学检索</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">全国小学检索</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">高考数据库</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">考研查询数据库</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">公务员职位检索</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">培训课程检索</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">硕博导师数据库</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">考试百科</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">校园招聘信息</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">在职硕士数据库</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">职位信息检索</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">留学院校信息</a></li>
+				<li><img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">自考数据库</a>　<img src="images/dot.jpg" width="17" height="17" align="absmiddle" /><a href="#">招生信息服务</a></li>
+
+		</ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="foot">
+  <div class="one">
+    <div class="footone-zuo">
+      <p><strong>重要链接：</strong><a href="#">教育部涉外监管信息网</a>　<a href="#">长江学者奖励计划</a>　<a href="#">中国科技论文在线</a>　<a href="#">中国高校技术产权交易网</a>　<a href="#">神州学人</a>　<a href="#">赛尔网络</a><br><a href="#">中国高校科技成果转化网</a>　<a href="#">中国学位及教育文凭认证</a></p>
+     <form>
+ <select onchange="gotopage(this.value)" name="list" class="select1" id="select2"> 
+    <option selected="selected" value="0">国务院部门网站</option>
+    <option value="http://www.mfa.gov.cn">外交部</option>
+    <option value="http://www.mod.gov.cn/">国防部</option>
+    <option value="http://www.ndrc.gov.cn">发展改革委</option>
+    <option value="http://www.moe.gov.cn">教育部</option>
+    <option value="http://www.most.gov.cn">科技部</option>
+    <option value="http://www.miit.gov.cn/">工业和信息化部</option>
+    <option value="http://www.seac.gov.cn">国家民委</option>
+    <option value="http://www.mps.gov.cn">公安部</option>
+    <option value="http://www.mos.gov.cn">监察部</option>
+    <option value="http://www.mca.gov.cn">民政部</option>
+    <option value="http://www.moj.gov.cn/">司法部</option>
+    <option value="http://www.mof.gov.cn">财政部</option>
+    <option value="http://www.mohrss.gov.cn/">人力资源社会保障部</option>
+    <option value="http://www.mlr.gov.cn/">国土资源部</option>
+    <option value="http://www.mep.gov.cn/">环境保护部</option>
+    <option value="http://www.mohurd.gov.cn/">住房城乡建设部</option>
+    <option value="http://www.moc.gov.cn/">交通运输部</option>
+    <option value="http://www.china-mor.gov.cn/">铁道部</option>
+    <option value="http://www.mwr.gov.cn/">水利部</option>
+    <option value="http://www.moa.gov.cn/">农业部</option>
+    <option value="http://www.mofcom.gov.cn/">商务部</option>
+    <option value="http://www.mcprc.gov.cn/">文化部</option>
+    <option value="http://www.moh.gov.cn/">卫生部</option>
+    <option value="http://www.chinapop.gov.cn/">人口计生委</option>
+    <option value="http://www.pbc.gov.cn/">人民银行</option>
+    <option value="http://www.audit.gov.cn/">审计署</option>
+    <option value="http://www.sasac.gov.cn/">国资委</option>
+    <option value="http://www.customs.gov.cn/">海关总署</option>
+    <option value="http://www.chinatax.gov.cn/">税务总局</option>
+    <option value="http://www.saic.gov.cn/">工商总局</option>
+    <option value="http://www.aqsiq.gov.cn/">质检总局</option>
+    <option value="http://www.chinasarft.gov.cn/">广电总局</option>
+    <option value="http://www.gapp.gov.cn/">新闻出版总署(版权局)</option>
+    <option value="http://www.sport.gov.cn/">体育总局</option>
+    <option value="http://www.chinasafety.gov.cn/">安全监管总局</option>
+    <option value="http://www.stats.gov.cn/">统计局</option>
+    <option value="http://www.forestry.gov.cn/">林业局</option>
+    <option value="http://www.sipo.gov.cn/">知识产权局</option>
+    <option value="http://www.cnta.gov.cn/">旅游局</option>
+    <option value="http://www.sara.gov.cn/GB/">宗教局</option>
+    <option value="http://www.counsellor.gov.cn/">参事室</option>
+    <option value="http://www.ggj.gov.cn/">国管局</option>
+    <option value="http://www.nbcp.gov.cn/">预防腐败局</option>
+    <option value="http://www.gqb.gov.cn/">侨办</option>
+    <option value="http://www.hmo.gov.cn/">港澳办</option>
+    <option value="http://www.chinalaw.gov.cn/">法制办</option>
+    <option value="http://www.xinhuanet.com/">新华社</option>
+    <option value="http://www.cas.cn/">中科院</option>
+    <option value="http://www.cass.net.cn/">社科院</option>
+    <option value="http://www.cae.cn/">工程院</option>
+    <option value="http://www.drc.gov.cn/">发展研究中心</option>
+    <option value="http://www.nsa.gov.cn/">行政学院</option>
+    <option value="http://www.cea.gov.cn/">地震局</option>
+    <option value="http://www.cma.gov.cn/">气象局</option>
+    <option value="http://www.cbrc.gov.cn/">银监会</option>
+    <option value="http://www.csrc.gov.cn/">证监会</option>
+    <option value="http://www.circ.gov.cn/">保监会</option>
+    <option value="http://www.serc.gov.cn/">电监会</option>
+    <option value="http://www.ssf.gov.cn/">社保基金会</option>
+    <option value="http://www.nsfc.gov.cn/">自然科学基金会</option>
+    <option value="http://www.gwytb.gov.cn/">台办</option>
+    <option value="http://www.scio.gov.cn/">新闻办</option>
+    <option value="http://www.saac.gov.cn/">档案局</option>
+    <option value="http://www.gjxfj.gov.cn/">信访局</option>
+    <option value="http://www.chinagrain.gov.cn/">粮食局</option>
+    <option value="http://www.tobacco.gov.cn/">烟草局</option>
+    <option value="http://www.safea.gov.cn/">外专局</option>
+    <option value="http://www.scs.gov.cn/">公务员局</option>
+    <option value="http://www.soa.gov.cn/">海洋局</option>
+    <option value="http://www.sbsm.gov.cn/">测绘局</option>
+    <option value="http://www.caac.gov.cn/">民航局</option>
+    <option value="http://www.post.gov.cn/">邮政局</option>
+    <option value="http://www.sach.gov.cn/">文物局</option>
+    <option value="http://www.sda.gov.cn/WS01/CL0001/">食品药品监管局</option>
+    <option value="http://www.satcm.gov.cn/">中医药局</option>
+    <option value="http://www.safe.gov.cn/">外汇局</option>
+    <option value="http://www.chinasafety.gov.cn/mjweb/mjindex07.htm">煤矿安监局</option>
+    <option value="http://www.oscca.gov.cn/">密码局</option>
+    <option value="http://www.cnsa.gov.cn">航天局</option>
+    <option value="http://www.caea.gov.cn">原子能机构</option>
+    <option value="http://www.china-language.gov.cn/">国家语委</option>
+    <option value="http://www.cpad.gov.cn/">国务院扶贫办</option>
+    <option value="http://www.3g.gov.cn/">国务院三峡办</option>
+  </select>
+  <select onchange="gotopage(this.value)" name="list" id="select2" class="select1"> 
+   <option selected="selected" value="0">教育部相关网站</option>
+   <option value="http://www.moe.edu.cn/">中华人民共和国教育部门户网站</option>
+   <option value="http://www.eol.cn/">中国教育在线</option>
+   <option value="http://www.ssmz.edu.cn/">中国少数民族教育网</option>
+   <option value="http://www.chinadegrees.cn">中国学位与研究生教育信息网</option>
+   <option value="http://www.chinaedu.edu.cn/">中国教育信息网</option>
+   <option value="http://www.csc.edu.cn/">国家留学网</option>
+   <option value="http://www.myjob.edu.cn/">中国高校毕业生就业服</option>
+   <option value="http://www.cetv.edu.cn/">中国教育电视台网站</option>
+   <option value="http://www.hie.edu.cn/">中国高教改革与发展网</option>
+   <option value="http://www.uast.com.cn/">高校农业科技与教育联</option>
+   <option value="http://www.jsj.edu.cn/">教育涉外监管信息网</option>
+   <option value="http://www.chsi.com.cn/">中国高等教育学生信息</option>
+   <option value="http://www.21caas.com/">中国院校后勤信息网</option>
+   <option value="http://www.chinayz.com.cn/index.htm">中国研究生招生信息网</option>
+   <option value="http://www.cscse.edu.cn/">中国留学网</option>
+   <option value="http://www.itat.com.cn/">全国信息技术应用培训</option>
+   <option value="http://www.cbe21.com/">中国基础教育网</option>
+   <option value="http://www.cvae.edu.cn/">中国职业教育与成人教</option>
+   <option value="http://www.jingpinke.com/">国家精品课程资源网</option>
+   <option value="http://www.paper.edu.cn/">中国科技论文在线</option>
+   <option value="http://www.meeting.edu.cn/">中国学术会议在线</option>
+   <option value="http://www.china-language.gov.cn/">中国语言文字网</option>
+   <option value="http://www.e-chinaedu.cn/">中国教育信息化网</option>
+   <option value="http://www.jyb.cn/">中国教育新闻网</option>
+   <option value="http://www.jycbxx.net.cn/">教育出版信息网</option>
+   <option value="http://www.cern.net.cn/">中国教育资源网</option>
+   <option value="http://yz.chsi.cn/">中国研究生招生信息网</option>
+   <option value="http://ycjy.moe.edu.cn/">农村中小学现代远程教</option>
+   <option value="http://www.ceat.edu.cn/">中国教育干部培训网</option>
+   <option value="http://www.cupa.com.cn/">中国校长协会网</option>
+   <option value="http://www.cbern.gov.cn/">国家基础教育资源网</option>
+   <option value="http://www.cedf.org.cn/">中国教育发展基金会网站</option>
+   <option value="http://www.cksp.edu.cn/">长江学者奖励计划</option>
+   <option value="http://www.eachina.org.cn/">教育部基础教育质量监</option>
+   <option value="http://www.jsjjh.org.cn/">中国中小学幼儿教师奖</option>
+   <option value="http://www.csh.edu.cn/">中国学生体质健康网</option>
+   <option value="http://journal.hep.com.cn/">中国学术前沿期刊网</option>
+   <option value="http://www.wei.moe.edu.cn/">世界教育信息网</option>
+  </select>
+  
+  <select onchange="gotopage(this.value)" name="list" id="select2" class="select1"> 
+   <option selected="selected" value="0">教育部直属高校网站</option>
+   <option value="http://www.pku.edu.cn/">北京大学</option>
+   <option value="http://www.ruc.edu.cn/">中国人民大学</option>
+   <option value="http://www.tsinghua.edu.cn/">清华大学</option>
+   <option value="http://www.ustb.edu.cn/">北京科技大学</option>
+   <option value="http://www.buct.edu.cn/">北京化工大学</option>
+   <option value="http://www.bnu.edu.cn/">北京师范大学</option>
+   <option value="http://www.blcu.edu.cn/">北京语言大学</option>
+   <option value="http://www.bfsu.edu.cn/">北京外国语大学</option>
+   <option value="http://www.bjtu.edu.cn/">北京交通大学</option>
+   <option value="http://www.bupt.edu.cn/">北京邮电大学　</option>
+   <option value="http://www.cup.edu.cn/">中国石油大学（北京）</option>
+   <option value="http://www.upc.edu.cn/">中国石油大学（华东）</option>
+   <option value="http://www.cau.edu.cn/">中国农业大学</option>
+   <option value="http://www.cuc.edu.cn/">中国传媒大学</option>
+   <option value="http://www.bjfu.edu.cn/">北京林业大学</option>
+   <option value="http://www.cupl.edu.cn/">中国政法大学</option>
+   <option value="http://www.cufe.edu.cn/">中央财经大学</option>
+   <option value="http://www.ccom.edu.cn/">中央音乐学院</option>
+   <option value="http://www.chntheatre.edu.cn/">中央戏剧学院</option>
+   <option value="http://www.cafa.edu.cn/">中央美术学院</option>
+   <option value="http://www.bucm.edu.cn">北京中医药大学</option>
+   <option value="http://www.uibe.edu.cn/">对外经济贸易大学</option>
+   <option value="http://www.nankai.edu.cn/">南开大学</option>
+   <option value="http://www.tju.edu.cn/">天津大学</option>
+   <option value="http://www.ncepu.edu.cn/">华北电力大学</option>
+   <option value="http://www.neu.edu.cn/">东北大学</option>
+   <option value="http://www.dlut.edu.cn/">大连理工大学</option>
+   <option value="http://www.jlu.edu.cn/newindex.html">吉林大学</option>
+   <option value="http://www.nenu.edu.cn/">东北师范大学</option>
+   <option value="http://www.nefu.edu.cn/">东北林业大学</option>
+   <option value="http://www.fudan.edu.cn/">复旦大学</option>
+   <option value="http://www.tongji.edu.cn/">同济大学</option>
+   <option value="http://www.sjtu.edu.cn/">上海交通大学</option>
+   <option value="http://www.ecust.edu.cn/">华东理工大学</option>
+   <option value="http://www.dhu.edu.cn/">东华大学</option>
+   <option value="http://www.ecnu.edu.cn/">华东师范大学</option>
+   <option value="http://www.shisu.edu.cn/">上海外国语大学</option>
+   <option value="http://www.nju.edu.cn/">南京大学</option>
+   <option value="http://www.shufe.edu.cn/">上海财经大学</option>
+   <option value="http://www.seu.edu.cn/">东南大学</option>
+   <option value="http://www.cumt.edu.cn/">中国矿业大学</option>
+   <option value="http://www.cumtb.edu.cn/">中国矿业大学（北京）</option>
+   <option value="http://www.hhu.edu.cn/">河海大学</option>
+   <option value="http://www.sytu.edu.cn/">江南大学</option>
+   <option value="http://www.njau.edu.cn/">南京农业大学</option>
+   <option value="http://www.hfut.edu.cn/">合肥工业大学</option>
+   <option value="http://www.cpu.edu.cn/">中国药科大学</option>
+   <option value="http://www.zju.edu.cn/">浙江大学</option>
+   <option value="http://www.xmu.edu.cn/">厦门大学</option>
+   <option value="http://www.sdu.edu.cn/">山东大学</option>
+   <option value="http://www.ouc.edu.cn/">中国海洋大学</option>
+   <option value="http://www.whu.edu.cn/">武汉大学</option>
+   <option value="http://www.hust.edu.cn/index.html">华中科技大学</option>
+   <option value="http://www.cug.edu.cn/">中国地质大学（武汉）</option>
+   <option value="http://www.cugb.edu.cn/">中国地质大学（北京）</option>
+   <option value="http://www.whut.edu.cn/">武汉理工大学</option>
+   <option value="http://www.ccnu.edu.cn/">华中师范大学</option>
+   <option value="http://www.hzau.edu.cn/">华中农业大学</option>
+   <option value="http://www.znufe.edu.cn/">中南财经政法大学</option>
+   <option value="http://www.hnu.edu.cn/">湖南大学</option>
+   <option value="http://www.csu.edu.cn/">中南大学</option>
+   <option value="http://www.zsu.edu.cn/">中山大学</option>
+   <option value="http://www.scut.edu.cn/">华南理工大学</option>
+   <option value="http://www.scu.edu.cn/">四川大学</option>
+   <option value="http://www.swufe.edu.cn/">西南财经大学</option>
+   <option value="http://www.swjtu.edu.cn/">西南交通大学</option>
+   <option value="http://www.uestc.edu.cn/">电子科技大学</option>
+   <option value="http://www.cqu.edu.cn/">重庆大学</option>
+   <option value="http://www.swu.edu.cn/">西南大学</option>
+   <option value="http://www.xjtu.edu.cn/">西安交通大学</option>
+   <option value="http://www.nwsuaf.edu.cn/">西北农林科技大学</option>
+   <option value="http://www.snnu.edu.cn/">陕西师范大学</option>
+   <option value="http://www.xidian.edu.cn/">西安电子科技大学</option>
+   <option value="http://www.chd.edu.cn/">长安大学</option>
+   <option value="http://www.lzu.edu.cn/">兰州大学</option>
+  </select>
+  
+  <select onchange="gotopage(this.value)" name="list" id="select2" class="select1"> 
+   <option selected="selected" value="0">地方教育机构网站</option>
+   <option value="http://www.bjedu.gov.cn/">北京市教育委员会</option>
+   <option value="http://www.tjmec.gov.cn/">天津市教育委员会</option>
+   <option value="http://www.hee.cn/">河北省教育厅</option>
+   <option value="http://www.sxedu.gov.cn/">山西省教育厅</option>
+   <option value="http://www.nmgov.edu.cn/">内蒙古教育厅</option>
+   <option value="http://www.lnein.gov.cn/">辽宁省教育厅</option>
+   <option value="http://www.jledu.gov.cn/">吉林省教育厅</option>
+   <option value="http://www.hlje.net/">黑龙江省教育厅</option>
+   <option value="http://www.shmec.gov.cn/">上海市教育委员会</option>
+   <option value="http://www.ec.js.edu.cn/">江苏省教育厅</option>
+   <option value="http://www.zjedu.gov.cn/">浙江省教育厅</option>
+   <option value="http://www.ahedu.gov.cn/">安徽省教育厅</option>
+   <option value="http://www.fjedu.gov.cn/">福建省教育厅</option>
+   <option value="http://www.jxedu.gov.cn/">江西省教育厅</option>
+   <option value="http://www.sdedu.gov.cn/">山东省教育厅</option>
+   <option value="http://www.hadoe.edu.cn/">河南省教育厅</option>
+   <option value="http://www.hbe.gov.cn/">湖北省教育厅</option>
+   <option value="http://gov.hnedu.cn/cn/gov/index.jsp">湖南省教育厅</option>
+   <option value="http://www.gdhed.edu.cn/">广东省教育厅</option>
+   <option value="http://www.gxedu.gov.cn/">广西壮族自治区教育厅</option>
+   <option value="http://edu.hainan.gov.cn/">海南省教育厅</option>
+   <option value="http://www.cqjw.gov.cn/">重庆市教育委员会</option>
+   <option value="http://www.scedu.net/">四川省教育厅</option>
+   <option value="http://www.guizhou.edu.cn/">贵州省教育厅</option>
+   <option value="http://www.ynjy.cn/">云南省教育厅</option>
+   <option value="http://www.xzedu.com.cn/">西藏自治区教育厅</option>
+   <option value="http://www.snedu.gov.cn/">陕西省教育厅</option>
+   <option value="http://www.gsedu.gov.cn/">甘肃省教育厅</option>
+   <option value="http://www.qhedu.gov.cn/">青海省教育厅</option>
+   <option value="http://nxedu.com/tzjg/dld/">宁夏回族自治区教育厅</option>
+   <option value="http://www.xjedu.gov.cn/">新疆维吾尔自治区教育厅</option>
+   <option value="http://www.dledu.com/">大连市教育局</option>
+   <option value="http://www.qdedu.gov.cn/">青岛市教育局</option>
+   <option value="http://nbedu.net.cn/">宁波市教育委员会</option>
+   <option value="http://www.xmedu.gov.cn/">厦门市教育局</option>
+   <option value="http://www.sz.edu.cn/">深圳市教育局</option>
+  </select>
+  <select class="select1" onchange="gotopage(this.value)" name="list" id="select2"> 
+   <option selected="selected">驻外使（领）馆教育处</option>
+   <option value="/publicfiles/business/htmlfiles/moe/index.html">－－－美洲－－－</option>
+   <option value="http://www.sino-education.org/">驻美国使馆教育处</option>
+   <option value="http://www.nyconsulate.prchina.org/">驻纽约领馆教育组</option>
+   <option value="http://www.chinaconsulatesf.org/">驻旧金山领馆教育组</option>
+   <option value="http://www.chinaconsulatela.org/education.html">驻洛杉矶领馆教育组</option>
+   <option value="http://www.chinahouston.org/">驻休斯敦领馆教育组</option>
+   <option value="http://www.chinaconsulatechicago.org/">驻芝加哥领馆教育组</option>
+   <option value="http://www.chineseeducation.ca/">驻加拿大使馆教育处 </option>
+   <option>驻多伦多领馆教育组</option>
+   <option>驻温哥华领馆教育组</option>
+   <option value="/publicfiles/business/htmlfiles/moe/index.html">－－－亚非－－－</option>
+   <option value="http://www.china-embassy.or.jp/">驻日本使馆教育处</option>
+   <option>驻大阪领馆教育组</option>
+   <option>驻札幌领馆教育组</option>
+   <option>驻朝鲜使馆教育组</option>
+   <option value="http://www.chinaemb.or.kr/">驻韩国使馆教育处</option>
+   <option>驻新加坡使馆教育处</option>
+   <option>驻泰国使馆教育组</option>
+   <option>驻印度使馆教育组</option>
+   <option>驻也门使馆教育组</option>
+   <option>驻以色列使馆教育组</option>
+   <option>驻埃及使馆教育组</option>
+   <option>驻南非使馆教育组</option>
+   <option value="/publicfiles/business/htmlfiles/moe/index.html">－－－大洋洲－－－</option>
+   <option value="http://www.sino-education.org.au/chn/">驻澳大利亚使馆教育处</option>
+   <option>驻悉尼领馆教育组</option>
+   <option>驻墨尔本领馆教育组</option>
+   <option value="http://www.chinaeducation.org.nz/">驻新西兰使馆教育组</option>
+   <option>驻奥克兰领馆教育组</option>
+   <option value="/publicfiles/business/htmlfiles/moe/index.html">－－－欧洲－－－</option>
+   <option value="http://www.eduru.org/">驻俄罗斯使馆教育处</option>
+   <option>驻圣彼德堡领馆教育组</option>
+   <option>驻白俄罗斯使馆教育组</option>
+   <option>驻乌克兰使馆教育处</option>
+   <option>驻罗马尼亚使馆教育组</option>
+   <option>驻匈牙利使馆教育组</option>
+   <option value="http://www.educhina.pl/">驻波兰使馆教育组</option>
+   <option>驻捷克使馆教育组</option>
+   <option>驻塞尔维亚和黑山使馆</option>
+   <option>驻保加利亚使馆教育组</option>
+   <option value="http://www.edu-chinaembassy.de/">驻德国使馆教育处</option>
+   <option>驻慕尼黑领馆教育组</option>
+   <option value="http://www.edu-china-embassy.ch/">驻瑞士使馆教育处</option>
+   <option value="http://www.chinaedu.be/">驻比利时使馆教育处</option>
+   <option>驻奥地利使馆教育处</option>
+   <option value="http://www.xs4all.nl/%7Ejiaoyu">驻荷兰使馆教育处</option>
+   <option>驻意大利使馆教育处</option>
+   <option>驻葡萄牙使馆教育组</option>
+   <option value="http://www.cnedu.nu/">驻瑞典使馆教育处</option>
+   <option value="http://www.chinaembassy.dk/frames-educational.htm">驻丹麦使馆教育组</option>
+   <option>驻挪威使馆教育组</option>
+   <option value="http://www.chinaembassy-fi.org/">驻芬兰使馆教育组</option>
+   <option value="http://jiaoyuchu.online.fr/">驻法国使馆教育处</option>
+   <option value="http://www.chinese-embassy.org.uk/">驻英国使馆教育处</option>
+   <option value="http://www.cneduman.org/">驻曼彻斯特领馆教育组</option>
+  </select>
+</form>
+    </div>
+    <div class="footone-you">
+      <p align="left"><strong>访问统计：</strong></p>
+	  <p align="left">昨日访问量：23907709</p>
+	  <p align="left">今年访问量：23713149577</p>
+	  <p align="left">去年访问量：21270492031</p>
+    </div>
+  </div>
+  <div class="two"> 
+    <form id="form1" name="form1" method="post" action=""><h1>站内搜索：</h1>
+      <input type="text" name="textfield" id="textfield" value="请输入关键字" onfocus="if(this.value=='请输入关键词') this.value=''" onblur="if(this.value=='') this.value='请输入关键词'" onclick="if(this.value=='请输入关键词')this.value=''">
+      <input type="submit" name="botton" id="bottuon" class="botton1" value="搜索"/>
+    </form>
+    <span>热搜关键字：<a href="#">高招大学信息查询</a>  <a href="#">研招办联系方式</a>  <a href="#">高校教师招聘</a>  <a href="#">就业信息网</a> <a href="#" >教育政策法规</a></span>
+  </div>
+  <div class="three"></div>
+  <div class="four">
+    <p>版权所有：<a href="#">中国教育和科研计算机网网络中心</a>　Copyright&#169; 1994-2012　<a href="#">CERNIC</a>,<a href="#">CERNET</a>　京ICP备05078770　<a href="#"><span>文网文[2008]228号</span></a></p>
+  <p><a href="#">关于假冒中国教育网的声明</a> | 有任何问题与建议请联络：<a href="#">Webmaster@cernet.com</a> </p>
+  </div>
+</div>
+</body>
+</html>

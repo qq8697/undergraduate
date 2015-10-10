@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>武宏斌的个人网站</title>
+<script language="JavaScript" type="text/javascript">
+<!--
+//v1.7
+// Flash Player Version Detection
+// Detect Client Browser type
+// Copyright 2005-2008 Adobe Systems Incorporated.  All rights reserved.
+var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
+var isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
+var isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
+function ControlVersion()
+{
+	var version;
+	var axo;
+	var e;
+	// NOTE : new ActiveXObject(strFoo) throws an exception if strFoo isn't in the registry
+	try {
+		// version will be set for 7.X or greater players
+		axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
+		version = axo.GetVariable("$version");
+	} catch (e) {
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 6.X players only
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");
+			
+			// installed player is some revision of 6.0
+			// GetVariable("$version") crashes for versions 6.0.22 through 6.0.29,
+			// so we have to be careful. 
+			
+			// default to the first public version
+			version = "WIN 6,0,21,0";
+			// throws if AllowScripAccess does not exist (introduced in 6.0r47)		
+			axo.AllowScriptAccess = "always";
+			// safe to call for 6.0r47 or greater
+			version = axo.GetVariable("$version");
+		} catch (e) {
+		}
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 4.X or 5.X player
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
+			version = axo.GetVariable("$version");
+		} catch (e) {
+		}
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 3.X player
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
+			version = "WIN 3,0,18,0";
+		} catch (e) {
+		}
+	}
+	if (!version)
+	{
+		try {
+			// version will be set for 2.X player
+			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+			version = "WIN 2,0,0,11";
+		} catch (e) {
+			version = -1;
+		}
+	}
+	
+	return version;
+}
+// JavaScript helper required to detect Flash Player PlugIn version information
+function GetSwfVer(){
+	// NS/Opera version >= 3 check for Flash plugin in plugin array
+	var flashVer = -1;
+	
+	if (navigator.plugins != null && navigator.plugins.length > 0) {
+		if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
+			var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
+			var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
+			var descArray = flashDescription.split(" ");
+			var tempArrayMajor = descArray[2].split(".");			
+			var versionMajor = tempArrayMajor[0];
+			var versionMinor = tempArrayMajor[1];
+			var versionRevision = descArray[3];
+			if (versionRevision == "") {
+				versionRevision = descArray[4];
+			}
+			if (versionRevision[0] == "d") {
+				versionRevision = versionRevision.substring(1);
+			} else if (versionRevision[0] == "r") {
+				versionRevision = versionRevision.substring(1);
+				if (versionRevision.indexOf("d") > 0) {
+					versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
+				}
+			}
+			var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
+		}
+	}
+	// MSN/WebTV 2.6 supports Flash 4
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.6") != -1) flashVer = 4;
+	// WebTV 2.5 supports Flash 3
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.5") != -1) flashVer = 3;
+	// older WebTV supports Flash 2
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
+	else if ( isIE && isWin && !isOpera ) {
+		flashVer = ControlVersion();
+	}	
+	return flashVer;
+}
+// When called with reqMajorVer, reqMinorVer, reqRevision returns true if that version or greater is available
+function DetectFlashVer(reqMajorVer, reqMinorVer, reqRevision)
+{
+	versionStr = GetSwfVer();
+	if (versionStr == -1 ) {
+		return false;
+	} else if (versionStr != 0) {
+		if(isIE && isWin && !isOpera) {
+			// Given "WIN 2,0,0,11"
+			tempArray         = versionStr.split(" "); 	// ["WIN", "2,0,0,11"]
+			tempString        = tempArray[1];			// "2,0,0,11"
+			versionArray      = tempString.split(",");	// ['2', '0', '0', '11']
+		} else {
+			versionArray      = versionStr.split(".");
+		}
+		var versionMajor      = versionArray[0];
+		var versionMinor      = versionArray[1];
+		var versionRevision   = versionArray[2];
+        	// is the major.revision >= requested major.revision AND the minor version >= requested minor
+		if (versionMajor > parseFloat(reqMajorVer)) {
+			return true;
+		} else if (versionMajor == parseFloat(reqMajorVer)) {
+			if (versionMinor > parseFloat(reqMinorVer))
+				return true;
+			else if (versionMinor == parseFloat(reqMinorVer)) {
+				if (versionRevision >= parseFloat(reqRevision))
+					return true;
+			}
+		}
+		return false;
+	}
+}
+function AC_AddExtension(src, ext)
+{
+  if (src.indexOf('?') != -1)
+    return src.replace(/\?/, ext+'?'); 
+  else
+    return src + ext;
+}
+function AC_Generateobj(objAttrs, params, embedAttrs) 
+{ 
+  var str = '';
+  if (isIE && isWin && !isOpera)
+  {
+    str += '<object ';
+    for (var i in objAttrs)
+    {
+      str += i + '="' + objAttrs[i] + '" ';
+    }
+    str += '>';
+    for (var i in params)
+    {
+      str += '<param name="' + i + '" value="' + params[i] + '" /> ';
+    }
+    str += '</object>';
+  }
+  else
+  {
+    str += '<embed ';
+    for (var i in embedAttrs)
+    {
+      str += i + '="' + embedAttrs[i] + '" ';
+    }
+    str += '> </embed>';
+  }
+  document.write(str);
+}
+function AC_FL_RunContent(){
+  var ret = 
+    AC_GetArgs
+    (  arguments, ".swf", "movie", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+     , "application/x-shockwave-flash"
+    );
+  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
+}
+function AC_SW_RunContent(){
+  var ret = 
+    AC_GetArgs
+    (  arguments, ".dcr", "src", "clsid:166B1BCA-3F9C-11CF-8075-444553540000"
+     , null
+    );
+  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
+}
+function AC_GetArgs(args, ext, srcParamName, classid, mimeType){
+  var ret = new Object();
+  ret.embedAttrs = new Object();
+  ret.params = new Object();
+  ret.objAttrs = new Object();
+  for (var i=0; i < args.length; i=i+2){
+    var currArg = args[i].toLowerCase();    
+    switch (currArg){	
+      case "classid":
+        break;
+      case "pluginspage":
+        ret.embedAttrs[args[i]] = args[i+1];
+        break;
+      case "src":
+      case "movie":	
+        args[i+1] = AC_AddExtension(args[i+1], ext);
+        ret.embedAttrs["src"] = args[i+1];
+        ret.params[srcParamName] = args[i+1];
+        break;
+      case "onafterupdate":
+      case "onbeforeupdate":
+      case "onblur":
+      case "oncellchange":
+      case "onclick":
+      case "ondblclick":
+      case "ondrag":
+      case "ondragend":
+      case "ondragenter":
+      case "ondragleave":
+      case "ondragover":
+      case "ondrop":
+      case "onfinish":
+      case "onfocus":
+      case "onhelp":
+      case "onmousedown":
+      case "onmouseup":
+      case "onmouseover":
+      case "onmousemove":
+      case "onmouseout":
+      case "onkeypress":
+      case "onkeydown":
+      case "onkeyup":
+      case "onload":
+      case "onlosecapture":
+      case "onpropertychange":
+      case "onreadystatechange":
+      case "onrowsdelete":
+      case "onrowenter":
+      case "onrowexit":
+      case "onrowsinserted":
+      case "onstart":
+      case "onscroll":
+      case "onbeforeeditfocus":
+      case "onactivate":
+      case "onbeforedeactivate":
+      case "ondeactivate":
+      case "type":
+      case "codebase":
+      case "id":
+        ret.objAttrs[args[i]] = args[i+1];
+        break;
+      case "width":
+      case "height":
+      case "align":
+      case "vspace": 
+      case "hspace":
+      case "class":
+      case "title":
+      case "accesskey":
+      case "name":
+      case "tabindex":
+        ret.embedAttrs[args[i]] = ret.objAttrs[args[i]] = args[i+1];
+        break;
+      default:
+        ret.embedAttrs[args[i]] = ret.params[args[i]] = args[i+1];
+    }
+  }
+  ret.objAttrs["classid"] = classid;
+  if (mimeType) ret.embedAttrs["type"] = mimeType;
+  return ret;
+}
+// -->
+</script>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="head">
+  <div id="empty">
+  </div>
+  <div id="nav">
+    <ul>
+      <li><a href="../网页作业一天下篇/天下篇.html">天下篇</a></li>
+      <li><a href="../网页作业—eva篇/eva篇.html">Eva篇</a></li>
+      <li><a href="../附：网页作业—米兰篇/米兰篇.html">米兰篇</a></li>
+      <li><a href="../附：网页作业—DOTA篇/DOTA篇.html">DOTA篇</a></li>
+      <li><a href="../网页作业—仙剑篇/xj.html">仙剑篇</a></li>
+    </ul>
+  </div>
+</div>
+<div id="main">
+  <div id="left">
+    <div id="per">
+      <script language="JavaScript" type="text/javascript">
+	AC_FL_RunContent(
+		'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0',
+		'width', '636',
+		'height', '341',
+		'src', '网页设计作业',
+		'quality', 'high',
+		'pluginspage', 'http://www.adobe.com/go/getflashplayer_cn',
+		'align', 'middle',
+		'play', 'true',
+		'loop', 'true',
+		'scale', 'showall',
+		'wmode', 'window',
+		'devicefont', 'false',
+		'id', '网页设计作业',
+		'bgcolor', '#272e36',
+		'name', '网页设计作业',
+		'menu', 'true',
+		'allowFullScreen', 'false',
+		'allowScriptAccess','sameDomain',
+		'movie', '网页设计作业',
+		'salign', ''
+		); //end AC code
+</script>
+<noscript>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="636" height="341" id="网页设计作业" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="网页设计作业.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#272e36" />	<embed src="网页设计作业.swf" quality="high" bgcolor="#272e36" width="636" height="341" name="网页设计作业" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_cn" />
+	</object>
+</noscript>
+    </div>
+    <div id="tx">
+      <P><a href="#">天下三</a></p>
+      <div class="side"><a href="#"><img src="images/pictianxia.jpg" width="200" height="120" /></a></div>
+    《天下3》是网易自主研发的首款全模式3D玄幻网游，集网易十年开发运营之大成。游戏以东方上古玄幻神话为背景，展现了一个雄奇壮丽、异彩纷呈的逼真虚拟世界。《天下3》独创多重终极追求模式，给予玩家个性化成长自由，成就专属精彩；首创多维立体空间体系，打破传统空间束缚，实现游戏内真正海陆空全新联动！海量特色玩法，引领3D网游革新！在《天下3》，你可以挑战单人动作副本，自由击杀狂扫群魔！也可以畅享全新海洋战场，组合战斗策略为王！千样玩法，万种乐趣！网游RPG2.0时代，从这里起航！ </div>
+    <div id="dota">
+      <p><a href="#">DOTA</a></p>
+      <div class="side"><a href="#"><img src="images/picDOTA.jpg" width="200" height="120" /></a></div>
+      DotA是Defense of the Ancients的简称，可以译作守护古树、守护遗迹、远古遗迹守卫， 是指基于魔兽争霸3：冰封王座（由暴雪娱乐公司出品）的多人即时对战自定义地图，可支持10个人同时连线游戏。Dota以对立的两个小队展开对战，通常是5v5，游戏目的是守护自己的远古遗迹（近卫方的生命之树、天灾方的冰封王座），同时摧毁对方的远古遗迹。DotA是目前唯一被暴雪娱乐公司官方认可的魔兽争霸的RPG地图。Allstars系列现更新作者为美国人IceFrog。 
+    </div>
+    <div id="eva">
+      <p><a href="#">Eva</a></p>
+      <div class="side"><a href="#"><img src="images/piceva.jpg" width="200" height="120" /></a></div>
+      Eva（Evangelion缩写）可指福音战士系列动漫，亦可指Eva全机体。TV版全26话，由GAINAX制作，东京电视系（TXN）自1995年10月4日到1996年3月27日播放《新世纪福音战士》，1997年推出两部剧场版「死与新生」与「THE END OF EVANGELION」（简称EOE，包括 Air 与まごころを、君に两部分）。漫画版由动画版人物设计贞本义行绘画。2007年推出Eva新剧场版（rebuild of evangelion）四部曲的计划，主制作方变更为Khara，第一集「序」和第二集「破」已上映，第三集名为「Q（Quickening）」，第四集名称未知。 
+    </div>
+    <div id="milan">
+      <p><a href="#">ac米兰</a></p>
+      <div class="side"><a href="#"><img src="images/picmilan.jpg" width="200" height="120" /></a></div>
+      1899年12月16日，一群聚集在杜诺德（Du Nord）宾馆的房间里的球迷，成立了一家体育俱乐部—米兰足球和板球俱乐部。创始人是：阿尔弗雷德。爱德华兹。此后历经了百年风风雨雨，AC米兰发展成为今天世界上最伟大的球队之一。截至到2011年，AC米兰共获得过7次欧洲冠军联赛冠军、5次欧洲超级杯冠军、2次欧洲优胜者杯冠军和4次洲际杯和世俱杯冠军。在意大利国内他们总共获得过18次意甲联赛冠军，2次意乙联赛冠军，5次杯赛冠军和6次意大利超级杯冠军。2011年8月6日在北京鸟巢"举行的意大利超级杯赛中，AC米兰队战胜国际米兰队，夺得超级杯。 
+    </div>
+    <div id="xj">
+      <p><a href="#">仙剑奇侠传</a></p>
+      <div class="side"><a href="#"><img src="images/picxj.jpg" width="200" height="120" /></a></div>
+      《仙剑奇侠传》系列是由中国台湾大宇资讯股份有限公司（简称"大宇资讯"或"大宇"）制作发行的电脑游戏，故事以中国古代的仙妖神鬼传说为背景、以武侠和仙侠为题材，迄今已发行6代单机角色扮演游戏、1款经营模拟游戏、1款网络游戏。系列首款作品发行于1995年7月，荣获两岸当时无数的游戏奖项，还被众多玩家誉为"旷世奇作"，初代及三代还相继于2004年和2008年被改编成电视剧。《仙剑奇侠传》系列与同公司的《轩辕剑》系列并称"大宇双剑"，均被公认为华人世界的两大经典角色扮演游戏系列。 
+    </div>
+  </div>
+  <div id="right">
+    <p>FAQ</p>
+    <dl>
+      <dt>1、你有想过死吗?</dt>
+      <dd>没 生命是如此的美丽，生命是...</dd>
+      <dt>2、让你选择一种水果形容自己，会选择什么?</dt>
+      <dd>橙子，因为爱吃</dd>
+      <dt>3、你上次哭是什么时候，为什么？</dt>
+      <dd>几天前，看电视剧</dd>
+      <dt>4、如果没有计划生育想要几个孩子？男孩还是女孩？为什么？</dt>
+      <dd>一男一女</dd>
+      <dt>5、你帅还是梁朝伟帅？</dt>
+      <dd>放过我吧，他粉丝太多</dd>
+      <dt>6、上厕所没带纸，兜里只有一张毛爷爷和一张女友照片，你是用哪张？</dt>
+      <dd>能带电话吗</dd>
+      <dt>7、下辈子你做女人还是男人？</dt>
+      <dd>外星人分男女吗</dd>
+      <dt>8、请用四个字形容你的长相，呵呵</dt>
+      <dd>呵呵呵呵</dd>
+      <dt>9、"猪"那么多，为什么猪肉还那么贵？</dt>
+      <dd>只有“猪”知道</dd>
+      <dt>10、说出一部你喜欢看的动画片？</dt>
+      <dd>eva</dd>
+      <dt>11、下雨了，你喜欢撑伞吗？</dt>
+      <dd>我不怎么喜欢穿衣服洗澡</dd>
+      <dt>12、你能喜欢一个人多久？</dt>
+      <dd>for ever</dd>
+      <dt>13、你觉得世界上是先有鸡，还是先有蛋？</dt>
+      <dd>母鸡啦</dd>
+      <dt>14、你会做饭不？</dt>
+      <dd>会买饭</dd>
+      <dt>15、你死了QQ号怎么办？</dt>
+      <dd>带走，让后人羡慕去吧</dd>
+      <dt>16、你现在一共穿了几件衣服？</dt>
+      <dd>4</dd>
+      <dt>17、有过喜欢的她没？</dt>
+      <dd>有 (*^__^*) 嘻嘻…… 还不少咧 博爱你懂得</dd>
+      <dt>18、有没喜欢过你的她？</dt>
+      <dd>应该有吧</dd>
+      <dt>19、有没有喜欢的"他"？</dt>
+      <dd>这个..么有</dd>
+      <dt>20、如果回到古代，你最想干什么？</dt>
+      <dd>几十年前就行，祖先您多买房</dd>
+    </dl>
+    
+    <div id="pic">
+      <script language='javascript' type="text/javascript">
+            linkarr = new Array();
+            picarr = new Array();
+            textarr = new Array();
+            var swf_width=300;
+            var swf_height=400;
+            var files = "images/pic001.jpg|images/pic002.jpg|images/pic003.jpg|images/pic004.jpg";
+            var links = "#|#|#|#";
+            var texts = "";
+            for(i=1;i<picarr.length;i++){
+              if(files=="") files = picarr[i];
+              else files += "|"+picarr[i];
+            }
+            for(i=1;i<linkarr.length;i++){
+              if(links=="") links = linkarr[i];
+              else links += "|"+linkarr[i];
+            }
+            for(i=1;i<textarr.length;i++){
+              if(texts=="") texts = textarr[i];
+              else texts += "|"+textarr[i];
+            }
+            document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">');
+            document.write('<param name="movie" value="images/indexpic.swf"><param name="quality" value="high">');
+            document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+            document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'">');
+            document.write('<embed src="images/indexpic.swf" wmode="opaque" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'& menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); document.write('</object>');
+          </script>
+    </div>
+    <div id="foot">Copyright @ 2012- FOV<br /> personal website by WHB
+    </div>
+  </div>
+</div>
+</body>
+</html>

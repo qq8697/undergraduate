@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+.fpic {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; Z-INDEX: 3; BACKGROUND: #000;  BORDER-BOTTOM-WIDTH: 0px; WIDTH: 476px; POSITION: relative; HEIGHT: 330px; BORDER-RIGHT-WIDTH: 0px;BORDER: #dddddd 1px solid;
+text-align:center
+}
+.bpic {
+	FLOAT: left; MARGIN: 0px; WIDTH: 244px; POSITION: relative; HEIGHT: 243px
+}
+#focpic {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; LEFT: 1px; BORDER-BOTTOM-WIDTH: 0px; POSITION: absolute; TOP: 1px; BORDER-RIGHT-WIDTH: 0px
+}
+.thubpic {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 4px; Z-INDEX: 20; PADDING-BOTTOM: 0px; WIDTH: 63px; CURSOR: pointer; PADDING-TOP: 4px; TOP: 10px; HEIGHT: 49px
+}
+.thubpiccur {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 4px; Z-INDEX: 20; PADDING-BOTTOM: 0px; WIDTH: 63px; CURSOR: pointer; PADDING-TOP: 4px; TOP: 10px; HEIGHT: 49px
+}
+.thubpiccur {
+	Z-INDEX: 30; BACKGROUND: url(../images/arrow3.gif) no-repeat left 50%
+}
+.thubpic IMG {
+	BORDER-RIGHT: #666 3px solid; BORDER-TOP: #666 2px solid; BORDER-LEFT: #666 3px solid; WIDTH: 56px; BORDER-BOTTOM: #666 2px solid; HEIGHT: 42px
+}
+.thubpiccur IMG {
+	BORDER-RIGHT: #666 3px solid; BORDER-TOP: #666 2px solid; BORDER-LEFT: #666 3px solid; WIDTH: 56px; BORDER-BOTTOM: #666 2px solid; HEIGHT: 42px
+}
+.thubpiccur IMG {
+	BORDER-LEFT-COLOR: #fff; BORDER-BOTTOM-COLOR: #fff; BORDER-TOP-COLOR: #fff; BORDER-RIGHT-COLOR: #fff
+}
+#zuo { background: #000 url(../images/bg_02.jpg) no-repeat 0px 0px; height: 1280px; width: 360px; float: left; }
+#you { background: url(../images/bg_05.jpg) no-repeat 0px 0px; height: 1280px; width: 600px; margin-left: 360px; padding-top: 12px; }
+#zuo ul { height: 185px; width: 152px; list-style: none; text-decoration: none; margin: 232px 0px 0px 213px; padding: 0px; }
+#you dl dd a { font-family: "Comic Sans MS", cursive; font-size: 24px; color: #FFF; text-decoration: none; }
+#you dl dt a { font-family: "Comic Sans MS", cursive; font-size: 36px; color: #FFF; text-decoration: none; }
+#you dl { margin-left: 30px; height: 90px; }
+#you dl dd { padding-left: 20px; margin-top: 10px; }
+#you #pic { margin: auto; height: 350px; width: 550px; padding-top: 15px; padding-left: 40px; }
+#you #news { height: 290px; padding-top: 10px; }
+#you #news p a { font-family: "Comic Sans MS", cursive; font-size: 24px; color: #FFF; text-decoration: none; }
+#you #news ul li a { font-size: 18px; color: #FFF; text-decoration: none; }
+#you #news ul { list-style: none; }
+#you #news p { margin-left: 20px; }
+#you #news ul li { margin: 10px; }
+#you #scr ul { list-style: none; overflow: auto; }
+#you #scr p a {font-family: "Comic Sans MS", cursive; font-size: 24px; color: #FFF; text-decoration: none; }
+#scr ul li a img { border-style: none; }
+#you #foot { height: 50px; width: 270px; border: 1px solid #C6F; margin: auto; }
+#you #foot p { font-size: 12px; color: #FFF; text-align: center; vertical-align: middle; margin: 5px; }
+#foot p span { color: #CCC; font-size: 12px; }
+#zuo ul li a:hover { color: #CCC; }
+#maintent #you dl dt a:hover { color: #96F; }
+#maintent #you dl dd a:hover { color: #99F; }
+#maintent #you #news ul li a:hover { color: #999; }
+#maintent #you #news p a:hover { color: #90C; }
+#maintent #you #scr p a:hover { color: #90C; }
+
+
+
+
+
+
+
+
+
+
+#you #scr p { margin-left: 20px; }
+#you #scr ul li { float: left; margin: 8px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+#zuo ul li a { font-size: 24px; color: #FFF; text-align: center; display: block; height: 32px; text-decoration: none; font-family: "Comic Sans MS", cursive; }
+#maintent #you #scr ul li a:hover img { position: relative; left: 1px; top: 1px; }
+
+#current { background: #000; }
+#zuo ul li { text-decoration: none; }
+
+
+
+#maintent { margin: auto; width: 960px; background: #000; height: 1300px; }
